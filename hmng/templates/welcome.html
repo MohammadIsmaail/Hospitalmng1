@@ -1,0 +1,538 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %} Welcome to Hospital Management System {% endblock %}
+
+{% block top %}
+
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="font-weight: bold;">HospitalCare</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item position-relative">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <div class="dropdown-content">
+                        <p>Welcome to HospitalCare</p>
+                    </div>
+                </li>
+                <li class="nav-item position-relative">
+                    <a class="nav-link" href="#services">Services</a>
+                    <div class="dropdown-content">
+                        <p>Explore our Services</p>
+                    </div>
+                </li>
+                <li class="nav-item position-relative">
+                    <a class="nav-link" href="#about">About Us</a>
+                    <div class="dropdown-content">
+                        <p>Learn About Us</p>
+                    </div>
+                </li>
+                <li class="nav-item position-relative">
+                    <a class="nav-link" href="#contact">Contact</a>
+                    <div class="dropdown-content">
+                        <p>Get in Touch</p>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary text-white ms-3" href="{%url 'hmng:apint' %}">Book Appointment</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 2nd Navbar -->
+<div class="navbar navbar-secondary py-1 mt-5">
+    <div class="container">
+        <!-- Aligning the login and registration menu items to the right -->
+        <div class="ms-auto">
+            <a class="navbar-brand" href="{% url 'hmng:loginView'%}">Login</a>
+            <a class="navbar-brand" href="{% url 'hmng:registrationForm'%}">Registration</a>
+            <a class="navbar-brand" href="#">Doctor Login</a>
+            <a class="navbar-brand" href="#">Doctor Registration</a>
+        </div>
+    </div>
+</div>
+
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #0056b3;
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #ff9900 !important;
+}
+
+.btn-primary {
+    background-color: #ff9900;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #cc7a00;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 0.9rem;
+    color: #333;
+    white-space: nowrap;
+    border-radius: 4px;
+}
+
+.nav-item:hover .dropdown-content {
+    display: block;
+}
+
+.navbar-secondary {
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+    font-size: 0px;
+    background-color: #0056b3;
+}
+
+.navbar-secondary .navbar-brand {
+    color: #0056b3;
+    text-align: end;
+    border: none;
+    font-family:'Courier New', Courier, monospace; 
+}
+
+.navbar-secondary .navbar-brand:hover {
+    color: #ff9900;
+    text-decoration: none;
+}
+</style>
+
+
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-slider">
+        <div class="slider-item">
+            <img src="{% static 'images/hos1.jpeg' %}" alt="Healthcare Image">
+            <div class="slider-caption">
+                <h1>Exceptional Healthcare</h1>
+                <p>Your health is our priority.</p>
+            </div>
+        </div>
+        <div class="slider-item">
+            <img src="{% static 'images/hos2.jpeg' %}" alt="Care Image">
+            <div class="slider-caption">
+                <h1>Compassionate Care</h1>
+                <p>We care for you like family.</p>
+            </div>
+        </div>
+        <div class="slider-item">
+            <img src="{% static 'images/hos3.jpeg' %}" alt="Expert Team">
+            <div class="slider-caption">
+                <h1>Expert Medical Team</h1>
+                <p>Our experts are here to help you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.hero-slider {
+    display: flex;
+    animation: slide 15s infinite;
+}
+
+.slider-item {
+    min-width: 100%;
+    position: relative;
+    height: 100vh;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slider-caption h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.slider-caption p {
+    font-size: 1.2rem;
+}
+
+@keyframes slide {
+    0%, 33.33% {
+        transform: translateX(0);
+    }
+    33.34%, 66.66% {
+        transform: translateX(-100%);
+    }
+    66.67%, 100% {
+        transform: translateX(-200%);
+    }
+}
+</style>
+
+<div style="height: 150px; text-align: center; font-size: 30px; padding: 50px; font-weight: bold; color: black;">
+    Founder of the Website
+</div>
+
+<style>
+.container12 {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+@media (min-width: 768px) {
+    .container12 {
+        flex-direction: row;
+        height: 100vh;
+    }
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.box1 {
+    background-color: white;
+    flex: 4;
+    display: flex;
+    justify-content: center;
+}
+
+.box1 img {
+    max-height: 450px;
+    width: auto;
+}
+
+.box2 {
+    background-color: white;
+    padding: 30px;
+    flex: 6;
+    color: #333;
+    font-weight: bold;
+}
+</style>
+
+<div class="container12">
+    <div class="box box1">
+        <img class="remove-bg" src="{% static 'images/doctor.jpeg' %}" alt="Doctor Image">
+    </div>
+    <div class="box box2">
+        Back in the day, we realised that just as innovation in medical science is elementary to the growth of healthcare, we need to bring innovation in how we take quality healthcare to everyone.<br>
+        <br>
+        We realised that it is not merely a transaction of health services between a patient and doctor. It is trust that fosters a healthy relationship in the journey of health.<br>
+        <br>
+        As we move with the times, we realise that technology has a huge role in making our services way more efficient. And by its application, way more human as well.<br>
+        <br>
+        We have a dream. Our dream is to be available to you round the clock, wherever you are and whenever you want. We want to be just one tap away from you, and this will be the beginning of consumer-centric healthcare.
+    </div>
+</div>
+
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container text-center py-5">
+        <h2>Our Services</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+                <div class="card p-4 shadow">
+                    <h3>Emergency Care</h3>
+                    <p>24/7 emergency services for critical cases. fight together</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card p-4 shadow">
+                    <h3>Outpatient Services</h3>
+                    <p>Comprehensive diagnostics and consultations.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card p-4 shadow">
+                    <h3>Specialized Surgery</h3>
+                    <p>Advanced surgical facilities with top surgeons.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Doctors  and Messages  -->
+  <!-- Doctors Section -->
+  <section id="doctors" class="doctors">
+    <div class="container">
+        <h2>Meet Our Doctors</h2>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="doctor-card">
+                    <img src="https://via.placeholder.com/150" alt="Doctor 1">
+                    <h4>Dr. A. Sharma</h4>
+                    <p>Cardiology Specialist</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="doctor-card">
+                    <img src="https://via.placeholder.com/150" alt="Doctor 2">
+                    <h4>Dr. B. Mehta</h4>
+                    <p>Pediatrician</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="doctor-card">
+                    <img src="https://via.placeholder.com/150" alt="Doctor 3">
+                    <h4>Dr. C. Rao</h4>
+                    <p>General Physician</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+<style>
+    
+    .services, .doctors, .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .service-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+.doctor-card img {
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            background-color: #007BFF;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+        }
+
+</style>
+<!-- Doctor end and messages -->
+
+
+
+<style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 50px 0;
+      font-size: 0.9rem;
+    }
+
+    .footer-logo img {
+      max-width: 180px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .footer-links .col {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links h5 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: #007bff;
+    }
+
+    .footer-social-icons {
+      margin-top: 20px;
+    }
+
+    .footer-social-icons a {
+      color: #fff;
+      margin-right: 15px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-social-icons a:hover {
+      color: #007bff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+<!-- Footer Section -->
+<footer>
+    <div class="container">
+      <div class="row footer-links">
+        <!-- Footer Logo and Information -->
+        <div class="col">
+          <div class="footer-logo">
+            <img src="https://example.com/logo.png" alt="Company Logo">
+          </div>
+          <p>Leading healthcare provider focused on delivering affordable and accessible healthcare to all.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col">
+          <h5>Quick Links</h5>
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+          <a href="#">Blog</a>
+        </div>
+
+        <!-- Legal and Policies -->
+        <div class="col">
+          <h5>Legal</h5>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Disclaimer</a>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col">
+          <h5>Follow Us</h5>
+          <div class="footer-social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; 2024 Healthcare Organization | All Rights Reserved | <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and Font Awesome for icons -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+{% endblock %}

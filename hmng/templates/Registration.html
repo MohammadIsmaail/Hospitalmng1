@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+
+{% block title %} Hospital Management System-Registration Status {% endblock %}
+
+{% block top %}
+<a href="{% url 'hmng:registrationForm' %}">Registration</a>
+<a href="{% url 'hmng:login' %}">Login</a>
+{% endblock %}
+
+{% block content %}
+
+{% if userStatus == 1 %}
+   <div class="userStatus">
+    Sorry,username already exists please try diffrent username.
+    <a href="{% url 'hmng:registrationForm' %}">Back to Candidate Registration Form</a>
+   </div>
+{% endif %}
+
+{% if userStatus == 2 %}
+  <div class="userStatus">
+    Congratulations!! User Created Successfully
+    <a href="{% url 'hmng:login' %}">Login</a>
+  </div>
+{% endif %}
+
+
+{% if userStatus == 3 %}
+  <div class="userStatus">
+    Oops!! Improper Request
+    <a href="{% url 'hmng:login' %}">Login</a>
+  </div>
+{% endif %}
+
+
+{% endblock %}
