@@ -100,3 +100,15 @@ def Nurse(request):
 
 def apint(request):
     return render(request, 'appotement.html')
+
+def logoutView(request):
+    try:
+        # Clear session data
+        del request.session['username']
+        del request.session['name']
+        del request.session['dob_p']
+    except KeyError:
+        pass  # In case the session data doesn't exist
+
+    # Redirect to the login page or home page
+    return redirect('hmng:loginView')

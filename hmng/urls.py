@@ -13,5 +13,7 @@ urlpatterns = [
     path('new-doctor', DoctorRegistrationForm, name='registrationFormDoctor'),
     path('store-doctor', DoctorRegistration, name='storeDoctor'),
     path('home', Nurse, name='home'),
-    path('apint',apint,name='apint')
+    path('apint',apint,name='apint'),
+    path('logout/',logoutView, name='logout'),
+    
 ]
