@@ -100,6 +100,11 @@ def Nurse(request):
 
 def apint(request):
     return render(request, 'appotement.html')
+    return render(request, 'appotement.html')
+
+
+
+
 
 def logoutView(request):
     try:
