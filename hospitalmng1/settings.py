@@ -15,7 +15,15 @@ from pathlib import Path
 import os
 
 
+# filepath: /c:/Users/moham/hospitalmng1/hospitalmng1/settings.py
+import os
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
